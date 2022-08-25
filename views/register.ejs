@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title><%= title %> | Register</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <!-- Custom CSS -->
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="container">
+    <article>
+        <div class="card sign-in-window">
+            <div class="row g-0">
+                <div class="col-lg-8">
+                    <img class="img-login-back" src="/images/signin_back.png" alt="sign in background image" />
+                </div>
+                <div class="col">
+                    <div class="card-body">
+                        <h4 class="card-title sign-in-title">Register</h4>
+
+                        <form class="row g-3 needs-validation" action="/reg" method="post" novalidate>
+                            <fieldset>
+                                <div class="col-12">
+                                    <label class="form-label width-max">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Username" aria-label="Username" required>
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label width-max">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" aria-label="Email" required>
+                                    </label>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label width-max">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" aria-label="Password" required>
+                                    </label>
+                                </div>
+
+                                <div class="flex-center">
+                                    <button class="btn btn-primary btn-login text-nowrap" type="submit">Register</button>
+                                </div>
+
+                                <p class="card-text">have an account? <a href="/login">Login</a></p>
+                            </fieldset>
+                        </form>
+
+                        <hr class="separator-or">
+
+                        <div class="social-grid-container">
+                            <div class="social-itm-1">
+                                <p class="card-text social-header">Login using</p>
+                            </div>
+                            <a class="btn btn-primary btn-lg btn-floating social-itm-2" href="#!" role="button"><i class="fa fa-brands fa-google"></i></a>
+                            <a class="btn btn-primary btn-lg btn-floating social-itm-3" href="#!" role="button"><i class="fa fa-brands fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-lg btn-floating social-itm-4" href="#!" role="button"><i class="fa fa-brands fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <div class="footer-box">
+        <p class="text-nowrap">Copyright &copy; 2022 by Naveen Dharmathunga. Use for learning purposes only.</p>
+    </div>
+</footer>
+
+<!-- Custom -->
+<script src="/javascripts/form_validate.js"></script>
+</body>
+</html>
