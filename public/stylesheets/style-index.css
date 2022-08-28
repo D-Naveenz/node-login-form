@@ -1,0 +1,25 @@
+.navbar-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    line-height: 0;		/* remove line-height */
+    display: inline-block;	/* circle wraps image */
+    margin: 5px;
+    border: 3px solid rgba(200,200,200,0.4);
+    padding: 0;
+    border-radius: 50%;	/* relative value */
+    box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    transition: linear 0.25s;
+    height: 56px;
+    width: 56px;
+}
+
+.user-avatar img {
+    border-radius: 50%;	/* relative value for adjustable image size */
+    width: 100%;
+    height: 100%;
+}

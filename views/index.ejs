@@ -22,26 +22,33 @@
 <!--      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
 <!--        <span class="navbar-toggler-icon"></span>-->
 <!--      </button>-->
-      <div class="navbar-user row">
-        <div class="col user-avatar-box">
-          <img class="user-avatar" src="/images/avatar.svg">
+      <div class="navbar-user text-nowrap">
+        <div class="user-avatar">
+          <% if (!authenticated) { %>
+            <img src="/images/avatar.svg">
+          <% } else { %>
+            <img src="/uploads/<%= avatar %>">
+          <% } %>
         </div>
-        <div class="col username-box">
+        <div class="username-box">
           <div class="row">
             <div class="col">
               <h4><%= name %></h4>
             </div>
           </div>
           <div class="row row-cols-2">
-            <div class="col ">
-              <a href="/reg">Sign-up</a>
-            </div>
-            <div class="col">
-              <a href="/login">Login</a>
-            </div>
-            <div class="col">
-              <a href="#">Logout</a>
-            </div>
+            <% if (!authenticated) { %>
+              <div class="col ">
+                <a href="/reg">Sign-up</a>
+              </div>
+              <div class="col">
+                <a href="/login">Login</a>
+              </div>
+            <% } else { %>
+                <div class="col">
+                  <a href="/logout">Logout</a>
+                </div>
+            <% } %>
           </div>
         </div>
 

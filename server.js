@@ -47,7 +47,12 @@ app.use('/reg', registerRouter);
 
 /* GET home page. */
 app.get('/', checkAuthenticated, function(req, res, next) {
-  res.render('index', { title: 'NodeGuru', name: req.user.name });
+  res.render('index', {
+    title: 'NodeGuru',
+    name: req.user.name,
+    authenticated: true,
+    avatar: req.user.avatar
+  });
 });
 
 /* GET login page. */
@@ -61,6 +66,14 @@ app.post('/login', passport.authenticate('local', {
   failureRedirect: '/login',
   failureFlash: true
 }));
+
+/* GET logout page. */
+app.get('/logout', function(req, res){
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -80,10 +93,16 @@ app.use(function(err, req, res, next) {
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
+
     return next();
   }
 
-  res.redirect('/login');
+  // res.redirect('/login');
+  res.render('index', {
+    title: 'NodeGuru',
+    name: 'Guest',
+    authenticated: false
+  });
 }
 
 app.listen(3000);
