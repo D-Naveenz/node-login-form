@@ -1,14 +1,28 @@
 import express from 'express';
-const router = express.Router();
 import bcrypt from 'bcrypt';
-import { users } from '../db.js';
+import multer from 'multer';
+import path from 'path';
+import { users } from '../db-handler.js';
+
+const router = express.Router();
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/uploads');
+    },
+    filename: (req, file, cb) => {
+        // Debugging
+        //console.log(file);
+        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+    }
+})
+const upload = multer({ storage: storage });
 
 // Get register page
 router.get('/', (req, res, next) => {
     res.render('register', { title: 'NodeGuru', newUser: false })
-})
+});
 
-router.post('/', async (req, res, next) => {
+router.post('/', upload.single('avatar'), async (req, res, next) => {
     try {
         // generate hashed password from the given
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -16,7 +30,8 @@ router.post('/', async (req, res, next) => {
             id: Date.now().toString(),
             name: req.body.name,
             email: req.body.email,
-            password: hashedPassword
+            password: hashedPassword,
+            avatar: req.file.filename
         })
 
         // Debugging
@@ -31,6 +46,6 @@ router.post('/', async (req, res, next) => {
 
         res.redirect('reg');
     }
-})
+});
 
 export default router;

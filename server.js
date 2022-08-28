@@ -11,7 +11,8 @@ import path from 'path';
 import passport from 'passport';
 import flash from 'express-flash';
 import session from 'express-session';
-import { users } from './db.js';
+import { users } from './db-handler.js';
+
 
 import initPassport from './passport-config.js';
 // import indexRouter from './routes/index.js';

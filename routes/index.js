@@ -1,7 +1,7 @@
 import express from 'express';
 import passport from "passport";
 const router = express.Router();
-import { users } from '../db.js';
+import { users } from '../db-handler.js';
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
